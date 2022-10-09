@@ -70,8 +70,16 @@ namespace UnityStandardAssets.Vehicles.Car
 
             m_Rigidbody = GetComponent<Rigidbody>();
             m_CurrentTorque = m_FullTorqueOverAllWheels - (m_TractionControl*m_FullTorqueOverAllWheels);
+
+            SaveScript.TopSpeed = m_Topspeed;
         }
 
+
+        private void Update()
+        {
+            SaveScript.Speed = CurrentSpeed;
+
+        }
 
         private void GearChanging()
         {
