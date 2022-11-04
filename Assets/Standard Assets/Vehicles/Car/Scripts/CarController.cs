@@ -78,6 +78,7 @@ namespace UnityStandardAssets.Vehicles.Car
         private void Update()
         {
             SaveScript.Speed = CurrentSpeed;
+            SaveScript.Gear = m_GearNum;
 
         }
 
