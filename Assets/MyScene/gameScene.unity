@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 6917.414, g: 7403.9844, b: 9411.914, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -808,7 +808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1662.2507, y: 1059.6647}
+  m_AnchoredPosition: {x: 1649.25, y: 1059.6647}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &359421587
@@ -1667,6 +1667,7 @@ GameObject:
   - component: {fileID: 682051700}
   - component: {fileID: 682051680}
   - component: {fileID: 682051694}
+  - component: {fileID: 671825405}
   m_Layer: 0
   m_Name: Car
   m_TagString: Player
@@ -1674,6 +1675,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &671825405
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671825404}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &671916420
 Transform:
   m_ObjectHideFlags: 0
@@ -7782,7 +7796,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1241.8508, y: 1059.6647}
+  m_AnchoredPosition: {x: 1227.42, y: 1059.6647}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &813633350
@@ -8564,7 +8578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1441.0508, y: 1059.6647}
+  m_AnchoredPosition: {x: 1436.28, y: 1059.6647}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1301244145
@@ -9811,6 +9825,15 @@ MonoBehaviour:
   SpeedRing: {fileID: 1338620627}
   SpeedText: {fileID: 903784395}
   GearText: {fileID: 1941295812}
+  LapNumberText: {fileID: 78897986}
+  TotalLapsText: {fileID: 479029538}
+  LapTimeMinutesText: {fileID: 836750693}
+  LapTimeSecondsText: {fileID: 1034542264}
+  RaceTimeMinutesText: {fileID: 423871480}
+  RaceTimeSecondsText: {fileID: 20969778}
+  BestLapTimeMinutes: {fileID: 2027222073}
+  BestLapTimeSeconds: {fileID: 6499907}
+  TotalLaps: 3
 --- !u!114 &1765041958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10133,6 +10156,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d4eb7b1000dcdf4fa7cd0d7623fe360, type: 3}
+--- !u!1 &1999107977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1999107978}
+  - component: {fileID: 1999107979}
+  - component: {fileID: 1999107980}
+  m_Layer: 0
+  m_Name: LapCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1999107978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999107977}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5265, y: 1.5827, z: 0}
+  m_LocalScale: {x: 0.009550187, y: 0.3471733, z: 0.2014}
+  m_Children: []
+  m_Father: {fileID: 1760870937}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1999107979
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999107977}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1999107980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999107977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b614cfae70457394a8440349e4196b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2024893713
 GameObject:
   m_ObjectHideFlags: 0
