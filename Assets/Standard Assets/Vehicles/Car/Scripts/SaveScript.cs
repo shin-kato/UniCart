@@ -18,6 +18,14 @@ public class SaveScript : MonoBehaviour
     public static float BestLapTimeS;
     public static float LastLapM;
     public static float LastLapS;
+    public static float GameTime;
+    public static float LastCheckPoint1;
+    public static float ThisCheckPoint1;
+    public static float LastCheckPoint2;
+    public static float ThisCheckPoint2;
+    public static bool CheckPointPass1 = false;
+    public static bool CheckPointPass2 = false;
+    public static bool NewRecord = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +41,7 @@ public class SaveScript : MonoBehaviour
             LapChange = false;
             LapTimeMinutes = 0f;
             LapTimeSeconds = 0f;
+            GameTime = 0f;
         }
 
         //É^ÉCÉÄÇÃê›íË
@@ -40,6 +49,7 @@ public class SaveScript : MonoBehaviour
         {
             LapTimeSeconds = LapTimeSeconds + 1 * Time.deltaTime;
             RaceTimeSeconds = RaceTimeSeconds + 1 * Time.deltaTime;
+            GameTime = GameTime + 1 * Time.deltaTime;
         }
 
         //59ïbåoâﬂÇ≈1ï™â¡éZ

@@ -16,6 +16,9 @@ public class UIScript : MonoBehaviour
     public Text RaceTimeSecondsText;
     public Text BestLapTimeMinutes;
     public Text BestLapTimeSeconds;
+    public Text CheckPointTime;
+    public GameObject CheckPointDisplay;
+    public GameObject NewLapRecord;
     private float DisplaySpeed;
     public int TotalLaps = 3;
 
@@ -28,6 +31,11 @@ public class UIScript : MonoBehaviour
         GearText.text = "1";
         LapNumberText.text = "0";
         TotalLapsText.text = "/" + TotalLaps.ToString();
+
+        //ゲーム開始時に非表示
+        CheckPointDisplay.SetActive(false);
+        NewLapRecord.SetActive(false);
+
         
     }
 
@@ -82,18 +90,24 @@ public class UIScript : MonoBehaviour
         }
 
         //ベストタイムの更新
-        if (SaveScript.LastLapM == SaveScript.BestLapTimeM)
+        if (SaveScript.LapChange == true)
         {
-            if (SaveScript.LastLapS < SaveScript.BestLapTimeS)
+            if (SaveScript.LastLapM == SaveScript.BestLapTimeM)
             {
-                SaveScript.BestLapTimeS = SaveScript.LastLapS;
+                if (SaveScript.LastLapS < SaveScript.BestLapTimeS)
+                {
+                    SaveScript.BestLapTimeS = SaveScript.LastLapS;
+                    SaveScript.NewRecord = true;
+                }
             }
-        }
 
-        if (SaveScript.LastLapM < SaveScript.BestLapTimeM)
-        {
-            SaveScript.BestLapTimeM = SaveScript.LastLapM;
-            SaveScript.BestLapTimeS = SaveScript.LastLapS;
+            if (SaveScript.LastLapM < SaveScript.BestLapTimeM)
+            {
+                SaveScript.BestLapTimeM = SaveScript.LastLapM;
+                SaveScript.BestLapTimeS = SaveScript.LastLapS;
+                SaveScript.NewRecord = true;
+            }
+
         }
 
         //ベストタイムの表示
@@ -114,5 +128,87 @@ public class UIScript : MonoBehaviour
         {
             BestLapTimeSeconds.text = (Mathf.Round(SaveScript.BestLapTimeS).ToString());
         }
+
+        if (SaveScript.NewRecord == true)
+        {
+            NewLapRecord.SetActive(true);
+            StartCoroutine(LapRecordOff());
+        }
+
+
+        //チェックポイント1の更新
+        if (SaveScript.CheckPointPass1 == true)
+        {
+            SaveScript.CheckPointPass1 = false;
+            if (SaveScript.LapNumber > 1)
+            {
+                CheckPointDisplay.SetActive(true);
+
+                if (SaveScript.ThisCheckPoint1 > SaveScript.LastCheckPoint1)
+                {
+                    //更新時のUI変更
+                    CheckPointTime.color = Color.red;
+
+                    //更新タイムの表示
+                    CheckPointTime.text = "-" + (SaveScript.ThisCheckPoint1 - SaveScript.LastCheckPoint1).ToString();
+                    StartCoroutine(CheckPointOff());
+                }
+
+                if (SaveScript.ThisCheckPoint1 < SaveScript.LastCheckPoint1)
+                {
+                    //更新時のUI変更
+                    CheckPointTime.color = Color.green;
+
+                    //更新タイムの表示
+                    CheckPointTime.text = "+" + (SaveScript.LastCheckPoint1 - SaveScript.ThisCheckPoint1).ToString();
+                    StartCoroutine(CheckPointOff());
+                }
+            }
+        
+        }
+
+        //チェックポイント2の更新
+        if (SaveScript.CheckPointPass2 == true)
+        {
+            SaveScript.CheckPointPass2 = false;
+            if (SaveScript.LapNumber > 1)
+            {
+                CheckPointDisplay.SetActive(true);
+
+                if (SaveScript.ThisCheckPoint2 > SaveScript.LastCheckPoint2)
+                {
+                    //更新時のUI変更
+                    CheckPointTime.color = Color.red;
+
+                    //更新タイムの表示
+                    CheckPointTime.text = "-" + (SaveScript.ThisCheckPoint2 - SaveScript.LastCheckPoint2).ToString();
+                    StartCoroutine(CheckPointOff());
+                }
+
+                if (SaveScript.ThisCheckPoint2 < SaveScript.LastCheckPoint2)
+                {
+                    //更新時のUI変更
+                    CheckPointTime.color = Color.green;
+
+                    //更新タイムの表示
+                    CheckPointTime.text = "+" + (SaveScript.LastCheckPoint2 - SaveScript.ThisCheckPoint2).ToString();
+                    StartCoroutine(CheckPointOff());
+                }
+            }
+        }
+    }
+
+    IEnumerator CheckPointOff()
+    {
+        yield return new WaitForSeconds(2);
+        CheckPointDisplay.SetActive(false);
+
+    }
+
+    IEnumerator LapRecordOff()
+    {
+        yield return new WaitForSeconds(2);
+        SaveScript.NewRecord = false;
+        NewLapRecord.SetActive(false);
     }
 }
